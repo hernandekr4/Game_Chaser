@@ -1,0 +1,122 @@
+<?php
+// Start session (if needed for role-based access or further expansion)
+session_start();
+
+// Include centralized database connection
+include 'db_connect.php';
+
+// Handle form submission
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $awardName = htmlspecialchars(trim($_POST["award_name"]));
+    $issuer = htmlspecialchars(trim($_POST["issuer"]));
+
+    // Check if the awards table exists
+    $checkTableQuery = "SHOW TABLES LIKE 'awards'";
+    $checkTableResult = $conn->query($checkTableQuery);
+    if ($checkTableResult->num_rows === 0) {
+        die("<p class='error-message'>Error: 'awards' table does not exist. Please create it first.</p>");
+    }
+
+    // Insert data into the awards table
+    $sql = "INSERT INTO awards (AwardName, Issuer) VALUES (?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $awardName, $issuer);
+
+    if ($stmt->execute()) {
+        $message = "<p class='success-message'>Record added successfully!</p>";
+    } else {
+        $message = "<p class='error-message'>Error: " . $stmt->error . "</p>";
+    }
+
+    $stmt->close();
+}
+
+$conn->close();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awards Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+        .container {
+            background: #ffffff;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h1 {
+            font-size: 24px;
+            color: #333333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555555;
+        }
+        input[type="text"], input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            background: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        input[type="submit"]:hover {
+            background: #0056b3;
+        }
+        .success-message {
+            color: #28a745;
+            font-weight: bold;
+            text-align: center;
+        }
+        .error-message {
+            color: #dc3545;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enter Award Details</h1>
+        <?php if (!empty($message)) echo $message; ?>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <label for="award_name">Award Name:</label>
+            <input type="text" id="award_name" name="award_name" required>
+            
+            <label for="issuer">Issuer:</label>
+            <input type="text" id="issuer" name="issuer" required>
+            
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>

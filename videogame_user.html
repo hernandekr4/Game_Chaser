@@ -1,0 +1,139 @@
+<!DOCTYPE html> 
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Navigation</title>
+    <style>
+        header {
+            background: linear-gradient(to right, #1f4037, #99f2c8);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+
+        }
+        header .left-section {
+            text-align: left;
+        }
+        header .right-section {
+            text-align: right;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-family: 'Georgia', serif;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .logout-button {
+            top: 10px;
+            right: 20px; /* Adjust distance from the top-right corner */
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background-color 0.3s;
+        }
+        .logout-button:hover {
+            background-color: #0056b3;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            background: url('images/GameImage-Back.jpeg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+       
+
+        p {
+            font-family: Arial;
+            font-size: 20px;
+             color: rgb(8, 8, 8);
+            }
+        h1 {
+            color: #79ea09;
+            margin-top: 50px;
+        }
+        a {
+            display: inline-block;
+            margin: 20px;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #00c3ff;
+            background-color: #00080a  ;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
+
+        main {
+            padding: 30px;
+            text-align: center;
+        }
+        main h1 {
+            font-size: 5rem;
+            color: #333;
+            font-family: 'Trebuchet MS', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #a6fff6, #04f7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        main p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>User Dashboard</h1>
+        <button class="logout-button" onclick="window.location.href='logout.php'">Logout</button>
+
+    </header>
+    <main>
+        <h1>Game Chaser</h1>
+
+        <p>Search by Game</p>
+        <a href="search_by_genre.php">Search Game by Genre</a>
+        <a href="search_by_platform.php">Search Game by Platform</a>
+        <a href="search_by_award.php">Search Game by Award</a>
+        <a href="search_by_user.php">Search Game by User</a>
+    
+        <br>
+        <p>Select a Query</p>
+        <a href="Q1-results.php">Query Results</a>
+    
+        <br>
+        <p>Select a Report</p>
+        <a href="r1-results.php">Assigned Report Results</a>
+        <a href="r2-results.php">Game Awards Report</a>
+        <a href="r3-results.php">Genre Awards Results</a>
+    
+       
+    </main>
+   
+
+    
+</body>
+</html>

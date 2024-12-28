@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #141e30, #243b55);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #00c3ff;
+            text-shadow: 2px 2px 4px #000;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background: #2e4158;
+            color: white;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 20px 0;
+            border: none;
+            border-radius: 5px;
+            background: #00c3ff;
+            color: #000;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background: #01455a;
+        }
+        .error {
+            color: #ff4444;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .login-container a {
+            color: #014a57;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .login-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login to Game Chaser</h1>
+        <form method="POST" action="login.php">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="submit" value="Login">
+        </form>
+        <a href="register.php">Don't have an account? Register here</a>
+    </div>
+</body>
+</html>
